@@ -4,7 +4,8 @@ const oktaAuthConfig = {
     // you will need to add `pkce: false`
     issuer: 'https://dev-54544671.okta.com/oauth2/default',
     clientId: '0oa39q2kbuBf9DjzZ5d7',
-    redirectUri: window.location.origin + '/login/callback'
+    redirectUri: window.location.origin 
+    // + '/login/callback'
   };
 
 
