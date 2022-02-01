@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@material-ui/core";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 
 
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
@@ -20,15 +20,16 @@ import { oktaAuthConfig, oktaSignInConfig } from './config';
 
 const oktaAuth = new OktaAuth(oktaAuthConfig);
 
-function AppWithRouterAccess() {
+const AppWithRouterAccess = () => {
   const history = useHistory();
-  const customAuthHandler = () => {
-    history.push("/login");
-  };
 
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri, window.location.origin));
   };
+  const customAuthHandler = () => {
+    history.push("/login");
+  };
+
   return (
     <Security
       oktaAuth={oktaAuth}
